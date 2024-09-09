@@ -7,6 +7,7 @@ let masterPlay = document.getElementById('masterPlay')
 let myProgressBar = document.getElementById('myProgressBar')
 let gif = document.getElementById('gif')
 let songItems = document.getElementsByClassName('songItem')
+let currentSongText = document.getElementById('currentSongText') // Get the song name display element
 
 let songs = [
   {
@@ -74,6 +75,7 @@ masterPlay.addEventListener('click', () => {
     masterPlay.classList.remove('fa-circle-play')
     masterPlay.classList.add('fa-circle-pause')
     gif.style.opacity = 1
+    currentSongText.innerText = songs[songIndex].songName // Show current song name
   } else {
     audioElement.pause()
     masterPlay.classList.add('fa-circle-play')
@@ -119,10 +121,11 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach(
       audioElement.currentTime = 0
       audioElement.play()
 
-      // Update the main play button and gif
+      // Update the main play button, gif, and current song name
       masterPlay.classList.remove('fa-circle-play')
       masterPlay.classList.add('fa-circle-pause')
       gif.style.opacity = 1
+      currentSongText.innerText = songs[songIndex].songName // Show current song name
 
       // Change the clicked button to pause
       e.target.classList.remove('fa-circle-play')
